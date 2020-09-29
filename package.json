@@ -1,7 +1,7 @@
 {
   "name": "promise-status",
-  "version": "1.0.0",
-  "description": "Adds isPending, isFullfilled and isRejected properties to a thenable",
+  "version": "0.0.1",
+  "description": "Adds isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
