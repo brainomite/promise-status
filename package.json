@@ -2,7 +2,7 @@
   "name": "promise-status",
   "version": "0.0.1",
   "description": "Adds isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
