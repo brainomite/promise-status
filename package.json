@@ -1,6 +1,6 @@
 {
   "name": "status-for-promise",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Adds isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
   "main": "lib",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brainomite/promise-status.git"
+    "url": "git+https://github.com/brainomite/status-for-promise.git"
   },
   "keywords": [
     "promise",
@@ -18,9 +18,9 @@
   "author": "Aaron Young",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brainomite/promise-status/issues"
+    "url": "https://github.com/brainomite/status-for-promise/issues"
   },
-  "homepage": "https://github.com/brainomite/promise-status#readme",
+  "homepage": "https://github.com/brainomite/status-for-promise#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.1.3"
