@@ -1,8 +1,8 @@
 const { addStatusToPromise } = require("status-for-promise");
 
-// Create a promise that will resolve in 5 seconds
+// Create a promise that will resolve in 2 seconds
 const promiseForACake = new Promise((resolve, reject) => {
-  setTimeout(() => resolve("chocolate cake"), 5000);
+  setTimeout(() => resolve("chocolate cake"), 2000);
 });
 
 // A recursive function that will rerun every second until the

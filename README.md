@@ -10,7 +10,7 @@ Mutates a promise or a promise-like object adding status properties.
 
 ## API
 
-__addStatusToPromise(promise)__
+__addStatusToPromise(promise)__<br>
 Returns the promise after it has been mutated.
 
 ## Usage
