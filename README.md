@@ -36,14 +36,20 @@ setTimeout(() => {
   console.log(pendingPromise.isSettled); //=> false;
   console.log(pendingPromise.isFulfilled); //=> null;
   console.log(pendingPromise.isRejected); //=> null;
+  console.log(pendingPromise.value); //=> null;
+  console.log(pendingPromise.reason); //=> null;
 
   console.log(resolvedPromise.isSettled); //=> true;
   console.log(resolvedPromise.isFulfilled); //=> true;
   console.log(resolvedPromise.isRejected); //=> false;
+  console.log(resolvedPromise.value); //=> 123;
+  console.log(resolvedPromise.reason); //=> null;
 
   console.log(rejectedPromise.isSettled); //=> true;
   console.log(rejectedPromise.isFulfilled); //=> false;
   console.log(rejectedPromise.isRejected); //=> true;
+  console.log(rejectedPromise.value); //=> null;
+  console.log(rejectedPromise.reason.message); //=> "wow";
 });
 ```
 
