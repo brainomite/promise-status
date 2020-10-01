@@ -20,19 +20,14 @@ const { addStatusToPromise } = require("status-for-promise");
 
 /*****
 * I'm using a native promise. You may also use a promise-like object as long as
-*
 * value, reason, isSettled, isFulfilled, and isRejected don't already exist on
 * the object, and it implements the promise interface with .then and .catch,
 * you may use it. An error will be thrown if an incompatible library is used.
 *****/
 
 const resolvedPromise = addStatusToPromise(Promise.resolve(123));
-console.log(resolvedPromise.isSettled); //=> false;
-console.log(resolvedPromise.isFulfilled); //=> null;
-console.log(resolvedPromise.isRejected); //=> null;
-
 const pendingPromise = addStatusToPromise(new Promise(() => {}));
-const rejectedPromise = addStatusToPromise(Promise.reject(new Error("wow")));
+const rejectedPromise = addStatusToPromise(Promise.reject(new Error("oops")));
 
 // This represents an async function or even a function triggered externally
 // like a user clicking a button.
@@ -53,7 +48,7 @@ setTimeout(() => {
   console.log(rejectedPromise.isFulfilled); //=> false;
   console.log(rejectedPromise.isRejected); //=> true;
   console.log(rejectedPromise.value); //=> null;
-  console.log(rejectedPromise.reason.message); //=> "wow";
+  console.log(rejectedPromise.reason.message); //=> "oops";
 });
 ```
 
