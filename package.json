@@ -13,7 +13,9 @@
   "keywords": [
     "promise",
     "status",
-    "pending"
+    "pending",
+    "value",
+    "reason"
   ],
   "author": "Aaron Young",
   "license": "MIT",
