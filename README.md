@@ -1,4 +1,4 @@
-# promise-status
+# status-for-promise
 
 ![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg) [![npm version](https://badge.fury.io/js/status-for-promise.svg)](https://badge.fury.io/js/status-for-promise)
 
@@ -18,10 +18,14 @@ Returns the promise after it has been mutated.
 ```js
 const { addStatusToPromise } = require("status-for-promise");
 
-// I'm using a native promise. You may also use a promise-like object as long as
-// isSettled, isFulfilled, and isRejected don't already exist on the object, and
-// it implements the promise interface with .then and .catch, you may use it. An
-// error will be thrown if an incompatible library is used.
+/*****
+* I'm using a native promise. You may also use a promise-like object as long as
+*
+* value, reason, isSettled, isFulfilled, and isRejected don't already exist on
+* the object, and it implements the promise interface with .then and .catch,
+* you may use it. An error will be thrown if an incompatible library is used.
+*****/
+
 const resolvedPromise = addStatusToPromise(Promise.resolve(123));
 console.log(resolvedPromise.isSettled); //=> false;
 console.log(resolvedPromise.isFulfilled); //=> null;
