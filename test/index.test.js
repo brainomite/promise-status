@@ -13,18 +13,26 @@ describe("addStatusToPromise", () => {
   });
 
   it("Should throw an error if the any of the properties already exist", () => {
-    const aThenable = {
-      isSettled: undefined,
-      catch: () => {},
-      then: () => {},
-    };
-    let errorThrown = false;
-    try {
-      addStatusToPromise(aThenable);
-    } catch (e) {
-      errorThrown = true;
-    }
-    expect(errorThrown).to.be.true;
+    properties = ["isSettled", "isFulfilled", "isRejected", "value", "reason"];
+    properties.forEach((property) => {
+      const aThenable = {
+        [property]: undefined,
+        catch: () => {},
+        then: () => {},
+      };
+
+      let errorThrown = false;
+      let message = null;
+      try {
+        addStatusToPromise(aThenable);
+      } catch (e) {
+        errorThrown = true;
+        message = e.message;
+      }
+
+      expect(errorThrown).to.be.true;
+      expect(message.includes("catch")).to.be.false;
+    });
   });
 
   it("Should throw an error if then or catch are not functions", () => {
