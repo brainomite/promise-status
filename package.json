@@ -1,7 +1,7 @@
 {
   "name": "status-for-promise",
-  "version": "0.1.1",
-  "description": "Adds isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
+  "version": "0.2.0",
+  "description": "Adds status, value, isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
   "main": "lib",
   "scripts": {
     "test": "mocha test/**/*.test.js"
@@ -13,7 +13,9 @@
   "keywords": [
     "promise",
     "status",
-    "pending"
+    "pending",
+    "value",
+    "reason"
   ],
   "author": "Aaron Young",
   "license": "MIT",

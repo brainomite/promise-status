@@ -13,18 +13,26 @@ describe("addStatusToPromise", () => {
   });
 
   it("Should throw an error if the any of the properties already exist", () => {
-    const aThenable = {
-      isSettled: undefined,
-      catch: () => {},
-      then: () => {},
-    };
-    let errorThrown = false;
-    try {
-      addStatusToPromise(aThenable);
-    } catch (e) {
-      errorThrown = true;
-    }
-    expect(errorThrown).to.be.true;
+    properties = ["isSettled", "isFulfilled", "isRejected", "value", "reason"];
+    properties.forEach((property) => {
+      const aThenable = {
+        [property]: undefined,
+        catch: () => {},
+        then: () => {},
+      };
+
+      let errorThrown = false;
+      let message = null;
+      try {
+        addStatusToPromise(aThenable);
+      } catch (e) {
+        errorThrown = true;
+        message = e.message;
+      }
+
+      expect(errorThrown).to.be.true;
+      expect(message.includes("catch")).to.be.false;
+    });
   });
 
   it("Should throw an error if then or catch are not functions", () => {
@@ -48,26 +56,34 @@ describe("addStatusToPromise", () => {
     expect(unsettledPromise.isSettled).to.be.false;
     expect(unsettledPromise.isFulfilled).to.be.null;
     expect(unsettledPromise.isRejected).to.be.null;
+    expect(unsettledPromise.value).to.be.null;
+    expect(unsettledPromise.reason).to.be.null;
   });
 
   it("Should correctly set properties after the promise has been resolved", (done) => {
-    const resolvedPromise = new Promise((resolve) => resolve());
+    const resolveObj = {}
+    const resolvedPromise = new Promise((resolve) => resolve(resolveObj));
     addStatusToPromise(resolvedPromise);
     setTimeout(() => {
       expect(resolvedPromise.isSettled).to.be.true;
       expect(resolvedPromise.isFulfilled).to.be.true;
       expect(resolvedPromise.isRejected).to.be.false;
+      expect(resolvedPromise.value).to.be.equal(resolveObj);
+      expect(resolvedPromise.reason).to.be.null;
       done();
     });
   });
 
   it("Should correctly set properties after the promise has been rejected", (done) => {
-    const rejectedPromise = new Promise((_, reject) => reject());
+    const err = new Error('test')
+    const rejectedPromise = new Promise((_, reject) => reject(err));
     addStatusToPromise(rejectedPromise);
     setTimeout(() => {
       expect(rejectedPromise.isSettled).to.be.true;
       expect(rejectedPromise.isFulfilled).to.be.false;
       expect(rejectedPromise.isRejected).to.be.true;
+      expect(rejectedPromise.value).to.be.null;
+      expect(rejectedPromise.reason).to.be.equal(err);
       done();
     });
   });

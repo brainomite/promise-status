@@ -10,9 +10,10 @@ const promiseForACake = new Promise((resolve, reject) => {
 // This will simulate an async action or a user-triggered action
 
 const bugTheChef = (promiseForFood) => {
+  const { isSettled, isFulfilled, value } = promiseForFood;
   console.log("Chef is my food ready?");
-  if (promiseForFood.isSettled && promiseForFood.isFulfilled) {
-    console.log("Yes, check your table.\n");
+  if (isSettled && isFulfilled) {
+    console.log(`Yes, check your table for your ${value}.` + "\n");
   } else {
     console.log("No, its not ready yet. Go away.\n");
     setTimeout(() => bugTheChef(promiseForFood), 1000);

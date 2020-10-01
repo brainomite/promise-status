@@ -1,6 +1,6 @@
 # promise-status
 
-![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg)
+![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg) [![npm version](https://badge.fury.io/js/status-for-promise.svg)](https://badge.fury.io/js/status-for-promise)
 
 Mutates a promise or a promise-like object adding status properties.
 
@@ -36,14 +36,20 @@ setTimeout(() => {
   console.log(pendingPromise.isSettled); //=> false;
   console.log(pendingPromise.isFulfilled); //=> null;
   console.log(pendingPromise.isRejected); //=> null;
+  console.log(pendingPromise.value); //=> null;
+  console.log(pendingPromise.reason); //=> null;
 
   console.log(resolvedPromise.isSettled); //=> true;
   console.log(resolvedPromise.isFulfilled); //=> true;
   console.log(resolvedPromise.isRejected); //=> false;
+  console.log(resolvedPromise.value); //=> 123;
+  console.log(resolvedPromise.reason); //=> null;
 
   console.log(rejectedPromise.isSettled); //=> true;
   console.log(rejectedPromise.isFulfilled); //=> false;
   console.log(rejectedPromise.isRejected); //=> true;
+  console.log(rejectedPromise.value); //=> null;
+  console.log(rejectedPromise.reason.message); //=> "wow";
 });
 ```
 
