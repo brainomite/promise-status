@@ -1,6 +1,6 @@
 # promise-status
 
-![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg)
+![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg) [![npm version](https://badge.fury.io/js/status-for-promise.svg)](https://badge.fury.io/js/status-for-promise)
 
 Mutates a promise or a promise-like object adding status properties.
 
