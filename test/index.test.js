@@ -48,6 +48,8 @@ describe("addStatusToPromise", () => {
     expect(unsettledPromise.isSettled).to.be.false;
     expect(unsettledPromise.isFulfilled).to.be.null;
     expect(unsettledPromise.isRejected).to.be.null;
+    expect(unsettledPromise.value).to.be.null;
+    expect(unsettledPromise.reason).to.be.null;
   });
 
   it("Should correctly set properties after the promise has been resolved", (done) => {
@@ -57,6 +59,8 @@ describe("addStatusToPromise", () => {
       expect(resolvedPromise.isSettled).to.be.true;
       expect(resolvedPromise.isFulfilled).to.be.true;
       expect(resolvedPromise.isRejected).to.be.false;
+      expect(resolvedPromise.value).to.be.not.null;
+      expect(resolvedPromise.reason).to.be.null;
       done();
     });
   });
@@ -68,6 +72,8 @@ describe("addStatusToPromise", () => {
       expect(rejectedPromise.isSettled).to.be.true;
       expect(rejectedPromise.isFulfilled).to.be.false;
       expect(rejectedPromise.isRejected).to.be.true;
+      expect(rejectedPromise.value).to.be.null;
+      expect(rejectedPromise.reason).to.be.not.null;
       done();
     });
   });
