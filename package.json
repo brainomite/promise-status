@@ -1,6 +1,6 @@
 {
   "name": "status-for-promise",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Adds status, value, isPending, isFulfilled and isRejected properties to a promise or a promise-like object",
   "main": "lib",
   "scripts": {

@@ -2,7 +2,9 @@
 
 ![Node.js CI](https://github.com/brainomite/status-for-promise/workflows/Node.js%20CI/badge.svg) [![npm version](https://badge.fury.io/js/status-for-promise.svg)](https://badge.fury.io/js/status-for-promise)
 
-Mutates a promise or a promise-like object adding status properties.
+Sometimes we need to know whether or not a promise has resolved without waiting for the resolution.
+This package will allow you to know the status without having to create some sort of external state tracker to keep track of whether a promise has resolved or not.
+This package mutates a promise or a promise-like object adding status properties as well as the values or error when the promise is resolved.
 
 ## Install
 
@@ -12,6 +14,13 @@ Mutates a promise or a promise-like object adding status properties.
 
 __addStatusToPromise(promise)__<br>
 Returns the promise after it has been mutated.
+
+The new properties are:<br>
+promise.isSettled - `false` while pending, `true` after settlement<br>
+promise.isFulfilled - `null` while pending, `true` if the promise resolves, otherwise `false`<br>
+promise.isRejected - `null` while pending, `true` if the promise rejects, otherwise `false`.<br>
+promise.value - `null` while pending, or in a fulfilled status, otherwise value that `then()` returns.<br>
+promise.reason - `null` while pending, or in a rejected status, otherwise value that `catch()` returns.<br>
 
 ## Usage
 
@@ -29,8 +38,13 @@ const resolvedPromise = addStatusToPromise(Promise.resolve(123));
 const pendingPromise = addStatusToPromise(new Promise(() => {}));
 const rejectedPromise = addStatusToPromise(Promise.reject(new Error("oops")));
 
-// This represents an async function or even a function triggered externally
-// like a user clicking a button.
+/*****
+ * This represents an async function or even a function triggered externally
+ * like a user clicking a button.
+ *
+ * Do note, I didn't need to asynchronously to wait for individual promises to
+ * have a status update.
+ *****/
 setTimeout(() => {
   console.log(pendingPromise.isSettled); //=> false;
   console.log(pendingPromise.isFulfilled); //=> null;
