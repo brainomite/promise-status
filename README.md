@@ -6,6 +6,10 @@ Sometimes we need to know whether or not a promise has resolved without waiting 
 This package will allow you to know the status without having to create some sort of external state tracker to keep track of whether a promise has resolved or not.
 This package mutates a promise or a promise-like object adding status properties as well as the values or error when the promise is resolved.
 
+## Cute example
+
+<iframe frameborder="0" width="100%" height="500px" src="https://repl.it/@AaronYoung2/CalculatingFatherlyHashfunction#index.js"></iframe>
+
 ## Install
 
 `$ npm i status-for-promise`
